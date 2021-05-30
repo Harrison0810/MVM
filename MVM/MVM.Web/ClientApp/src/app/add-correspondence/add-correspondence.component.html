@@ -1,0 +1,25 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Nueva correspondencia</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="subject">Asunto</label>
+            <input type="text" formControlName="subject" placeholder="subject" name="subject" class="form-control"
+                id="subject">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Contenido</label>
+            <textarea type="content" formControlName="content" placeholder="content" name="content" class="form-control"
+                id="content" maxlength="2000"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Tipo de correspondencia</label>
+            <select class="form-control" formControlName="correspondenceTypeId" id="type">
+                <option [value]="type.correspondenceTypeId" *ngFor="let type of types">{{type.name}}</option>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Guardar</button>
+    </form>
+</div>

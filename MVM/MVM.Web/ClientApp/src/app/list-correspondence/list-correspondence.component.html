@@ -1,0 +1,38 @@
+<div class="col-md-12 user-container">
+    <h2 style="margin: auto"> Correspondencia</h2>
+    <button class="btn btn-danger" style="width:100px" (click)="NewCorrespondence()"> Agregar</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Asunto</th>
+                <th>Contenido</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let model of correspondences">
+                <td>{{model.code}}</td>
+                <td>{{model.subject}}</td>
+                <ng-container *ngIf="model.content.length > 80">
+                    <td>{{model.content | slice:0:80}}...</td>
+                </ng-container>
+                <ng-container *ngIf="model.content.length <= 80">
+                    <td>{{model.content}}</td>
+                </ng-container>
+                <td>{{model.creationDate | date}}</td>
+                <td>{{model.correspondenceType.name}}</td>
+                <td>
+                    <button class="btn btn-success" (click)="EditCorrespondence(model)"
+                        style="margin-left: 20px;">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-success" (click)="DeleteCorrespondece(model)"> Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
